@@ -1,7 +1,7 @@
 .search-box{
     display: flex;
     border: 2px solid #313133;
-    height: 3rem;
+    height: 2rem;
     align-items: center;
     border-radius: 8px;
 }
@@ -14,8 +14,8 @@
     position: absolute ;
     border-radius: 50%;
     width: 18px;
-    right: 2rem;
-    bottom: 1.5rem;
+    right: 1rem;
+    bottom: 1rem;
     height: 15px;
     font-size: 15px;
     color: #fff;
@@ -55,6 +55,7 @@
 .dropdown-container {
 position: absolute;
 top: 3rem;
+right: 3rem;
 box-shadow: 0 4px 4px -4px rgba(0,0,0,.12);
 height: 9rem;
 width: 14rem;
@@ -121,7 +122,7 @@ font-family:Georgia, 'Times New Roman', Times, serif;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 72px;
+    height: 50px;
     margin-top: 10px;
     box-shadow: 0 4px 4px -4px rgba(0,0,0,.12);
     width: 100%;
@@ -143,8 +144,8 @@ font-family:Georgia, 'Times New Roman', Times, serif;
     color: #313133;
 }
 .search-input{
-    height: 2.5rem;
-    width: 100%;
+    height: 1.7rem;
+    width: 90%;
     border: none;
     font-size: 16px;
     padding-right: 6px;
@@ -154,13 +155,25 @@ font-family:Georgia, 'Times New Roman', Times, serif;
 outline: none;
 }
 
+.search-button-container{
+    padding-top: 2px;
+}
+
+.cart-icon-count-container{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    align-items: center;
+}
+
 .search-button{
-    height: 3.2rem;
+    height: 2rem;
     background-color:  #e8830e;
     border: 1px solid  #b96a11;
     border-radius: 8px;
     width: 100px;
     color: #fff;
+    align-items: center;
     font-family:'Times New Roman', Times, serif;
 }
 .menu-container{
@@ -182,13 +195,11 @@ outline: none;
   @media(max-width:1024px) {
     .search-container{
         gap: 5px;
-        margin-right: 1rem;
     }
     
 .store-container{
     gap: 1rem;
     justify-content: space-between;
-
 }
 
   }
@@ -198,8 +209,10 @@ outline: none;
 @media (max-width:768px){
     .search-container{
         position: absolute;
-        top: 5.2rem;
+        top: 3.4rem;
         width: 100%;
+        padding-right: 7px;
+        padding-left: 7px;
     }
     .search-input{
         height: 1.7rem;
@@ -231,6 +244,11 @@ outline: none;
     width: 5rem;
     height: 2rem;
 }
+
+.search-container{
+    padding-right: 5px;
+    padding-left: 5px;
+}
 .search-box{
     display: flex;
     border: 2px solid #313133;
@@ -246,7 +264,7 @@ outline: none;
     
 }
 .cart-number{
-    right: 5rem;
+    right: 0.7rem;
     top: 1px;
     bottom: 5px;
     font-size: 9px;
@@ -291,3 +309,14 @@ outline: none;
 }
 
   }
+
+
+  .cart-icon-account-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+

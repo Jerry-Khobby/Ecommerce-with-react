@@ -1,31 +1,12 @@
-/* PreFooter.css */
-
-.pre-footer-container {
-    background-color: #f2eaea;
-    border-radius: 9px;
-    padding: 20px; /* Add padding to space the content from the edges */
-    max-width: 1000px; /* Set a maximum width for responsiveness */
-    margin-left: 15px;
-    margin-top: 30px;
-     /* Center the container horizontally */
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Additional styling for headings and paragraphs within your content */
-  .pre-footer-container h2 {
-    font-size: 1.5rem;
-    margin-top: 1rem;
-  }
-  
-  .pre-footer-container p {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  /* Add media queries for responsiveness if needed */
-  @media (max-width: 768px) {
-    .pre-footer-container {
-      padding: 10px; /* Adjust padding for smaller screens */
-    }
-  }
-  
+.footer-heading-container{
+  width: 100%;
+  background-color: #000;
+  height: 100px;
+  margin-top: 2rem;
+}
+.footer-text-container{
+  display: flex;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+}

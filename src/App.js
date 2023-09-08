@@ -9,10 +9,13 @@ import Bookings from './components/productInfo/bookings';
 import { EmailProvider } from './context/email';
 import Layout from './Layout';
 import NewAccount from './components/registration/newaccount';
+import './App.css'
+
 
 
 function App() {
   return (
+    <div className='app-container'>
     <EmailProvider>
     <CartProvider>
    <BrowserRouter>
@@ -29,6 +32,7 @@ function App() {
    </BrowserRouter>
    </CartProvider>
    </EmailProvider>
+   </div>
   );
 }
 

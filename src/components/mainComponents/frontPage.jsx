@@ -6,8 +6,7 @@ import PreFooter from '../footerSection/preFooter';
 
 const FrontPage = () => {
     return (
-        <div style={{marginLeft:50,marginRight:50}}>
-
+        <div>
 <ProductSession/>
 <PreFooter/>
         </div>

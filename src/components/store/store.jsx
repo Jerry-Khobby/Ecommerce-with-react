@@ -1,14 +1,13 @@
 import React,{useState} from 'react';
 import jumialogo from '../../images/Jumia-Logo.png';
 import { FaSearch } from 'react-icons/fa';
-import {AiOutlineUser,AiOutlineInbox,AiOutlineHeart} from 'react-icons/ai';
-import {IoIosArrowDown} from 'react-icons/io';
-import {MdKeyboardArrowUp} from 'react-icons/md'
+ import {AiOutlineUser,AiOutlineInbox,AiOutlineHeart} from 'react-icons/ai';
 import './storeNavbar.css';
 //import DropDownMenuItem from '../store/itemNavbar';
 import {AiOutlineShoppingCart} from 'react-icons/ai'
 import {Link} from 'react-router-dom'
 import { useCart } from '../../context/CartContext';
+import {BiUserCircle} from 'react-icons/bi'
 
 
 
@@ -26,7 +25,7 @@ const Store = () => {
     <div className="store-container">
       <Link to="/">
       <div className="logo-container">
-        <img src={jumialogo} alt="" height={100} width={180} />
+        <img src={jumialogo} alt="" height={100} width={100} />
       </div>
       </Link>
       <div className="search-container">
@@ -45,65 +44,50 @@ const Store = () => {
         </div>
       </div>
       {/** the account and the cart buttons  */}
-      <div className="menu-container">
-        <div className="menu-item">
-        <div className={isDropdownOpen? "dropdown-menu-item-never":"dropdown-menu-item"} >
-            <div className="user-icon">
-                <AiOutlineUser size={25}/>
-            </div>
-            <div className="menu-text">
-                Account
-            </div>
-            <div className='drop-icon' onClick={toggleDropdownOpen} style={{cursor: "pointer"}}>
-                {isDropdownOpen ?<IoIosArrowDown size={25} /> :<MdKeyboardArrowUp size={25} />} 
-                </div>
-             {isDropdownOpen &&(
-                <div className='dropdown-container'>
-                 <div className="dropdown-content">
-                 <div className="dropdown-item-button">
-                  <Link to="/signin">
-                    <button type='button' className='btn btn-default' style={{cursor:'pointer'}}>SIGN IN</button>
-                    </Link>
-                 </div>
-                 <div className='dropdown-item'>
-                 <div className="dropdown-item-account">
-                    <AiOutlineUser/>
-                    <Link to='/signin' style={{textDecoration:'none',color:'inherit'}}>
-                    <div>My Account</div>
-                    </Link>
-                 </div>
-                 <div className="dropdown-item-orders">
-                    <AiOutlineInbox/>
-                    <Link to='/signin' style={{textDecoration:'none',color:'inherit'}}>
-                    <div>Orders</div>
-                    </Link>
-                 </div>
-                 <div className='dropdown-item-savedItem'>
-                    <AiOutlineHeart/>
-                    <Link to='/signin' style={{textDecoration:'none',color:'inherit'}}>
-                    <div>Saved Items</div>
-                    </Link>
-                 </div>
-                 </div>
-                 </div>
-                 </div>
-             )}
-        </div>
-        </div>
-        <div className="menu-item-cart">
+    <div className='cart-icon-account-container'>
+        <Link to="/bookings" style={{color:'inherit',textDecoration:'none'}}>
+      <div className='cart-icon-count-container'>
           <AiOutlineShoppingCart size={28}/>
-          <Link to="/bookings" style={{textDecoration:'none',color:'inherit'}}>
-          <div>
-            <div className='cart-number'>
-              <div>{cartCount}</div>
-            </div>
-          Cart
-          </div>
-          </Link>
-          
-          </div>
+        <div className='cart-number'>
+          <p>{cartCount}</p>
+        </div>
       </div>
-      {/** the end of the account and the cart buttons  */}
+      </Link>
+      <div className='account-icon-container'>
+       <BiUserCircle size={28} onClick={toggleDropdownOpen} cursor='pointer'/>
+      </div>
+      {isDropdownOpen &&(
+          <div className='dropdown-container'>
+          <div className="dropdown-content">
+          <div className="dropdown-item-button">
+           <Link to="/signin">
+             <button type='button' className='btn btn-default' style={{cursor:'pointer'}}>SIGN IN</button>
+             </Link>
+          </div>
+          <div className='dropdown-item'>
+          <div className="dropdown-item-account">
+             <AiOutlineUser/>
+             <Link to='/signin' style={{textDecoration:'none',color:'inherit'}}>
+             <div>My Account</div>
+             </Link>
+          </div>
+          <div className="dropdown-item-orders">
+             <AiOutlineInbox/>
+             <Link to='/signin' style={{textDecoration:'none',color:'inherit'}}>
+             <div>Orders</div>
+             </Link>
+          </div>
+          <div className='dropdown-item-savedItem'>
+             <AiOutlineHeart/>
+             <Link to='/signin' style={{textDecoration:'none',color:'inherit'}}>
+             <div>Saved Items</div>
+             </Link>
+          </div>
+          </div>
+          </div>
+          </div>
+      )}
+    </div>
     </div>
   );
 };

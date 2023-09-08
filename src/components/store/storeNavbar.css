@@ -320,3 +320,20 @@ outline: none;
   }
 
 
+  @media(min-width:350px){
+    .search-container{
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .search-button{
+    width: 3.3rem;
+    font-size: 8px;
+    align-items: center;
+    justify-content: center;
+    }
+    .search-box{
+        width: 80%;
+    }
+  }
+

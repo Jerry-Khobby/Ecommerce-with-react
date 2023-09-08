@@ -3,6 +3,9 @@
   background-color: #000;
   height: 100px;
   margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .footer-text-container{
   display: flex;

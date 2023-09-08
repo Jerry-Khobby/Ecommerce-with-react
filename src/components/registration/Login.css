@@ -1,0 +1,126 @@
+.login_master_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    margin: 0 auto;
+    width: 70vw;
+    margin-top: 130px;
+  }
+  
+  .login_text_container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  
+  .login_footer_container {
+    text-align: center;
+    position: relative;
+  }
+
+  .login_footer_text {
+    display: inline-block;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+  }
+  /* Add any additional styling here */
+  
+
+  .login_input {
+    width:33vw;
+    height: 6vh;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: 2px solid orange;
+    position: relative;
+    justify-content: center;
+    text-align: center;
+
+    /* Add a border for better visibility */
+  }
+  .login_input_container{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+  }
+ 
+
+  .login_button_continue{
+    width:33vw;
+    height: 7vh;
+    margin-top: 15px;
+    background-color: #f8982d;
+    color: #fff;
+    border-radius: 8px;
+    border: 2px solid #f8982d;
+    font-size: 16px;
+    font-family: 'Times New Roman', Times, serif;
+    position: relative;
+  }
+
+
+  .login_button_facebook{
+    width:33vw;
+    height: 7vh;
+    margin-top: 75px;
+    background-color: blue;
+    border-radius: 8px;
+    border: 2px solid blue;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+gap: 2rem;
+    position: relative;
+  }
+
+
+ @media(max-width:768px){
+    .login_input{
+        width: 58vw;
+    }
+    .login_button_facebook{
+        width: 58vw;
+    }
+    .login_button_continue{
+        width: 58vw;
+    }
+ }
+ @media(max-width:320px){
+    .login_button_facebook{
+        align-items: center;
+        justify-content: space-between;
+        gap: 3px;
+    }
+ }
+
+ /* the media query for the screen of 480px */
+
+ @media(max-width:480px){
+    .login_button_facebook{
+        align-items: center;
+        justify-content: space-around;
+        gap: 1px;
+    }
+ }
+
+ @media(max-width:1024px){
+    .login_button_facebook{
+        width:50vw
+    }
+    .login_input{
+        width:50vw;
+    }
+    .login_button_continue{
+        width:50vw;
+    }
+ }

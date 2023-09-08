@@ -1,0 +1,40 @@
+.email_input{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+}
+
+.input_text{
+    width:33vw;
+    height: 6vh;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: 2px solid orange;
+    position: relative;
+    justify-content: center;
+    text-align: center;
+}
+
+.password_input{
+    width: 33vw;
+    border: 2px solid orange;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    height: 6vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.password_input_text{
+    width: 32vw;
+    border: none;
+    height: 4.8vh;
+    font-size: 1rem;
+    padding-left: 6px;
+}
+.password_input_text:focus{
+    outline: none;
+}

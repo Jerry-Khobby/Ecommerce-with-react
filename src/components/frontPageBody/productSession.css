@@ -99,4 +99,10 @@
       width: 100px;
     }
   }
+  @media(max-width:440px){
+    .product-list{
+      display: grid;
+      grid-template-columns: 50% 50%;
+    }
+  }
   

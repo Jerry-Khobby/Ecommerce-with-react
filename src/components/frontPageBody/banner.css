@@ -1,0 +1,57 @@
+/* styles.css */
+
+.banner {
+    margin-top: 1rem;
+    background-image: url('https://i.pinimg.com/236x/56/3f/8b/563f8b4e767bffe4b0f71522f2d419fc.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    height: 40vh; /* Adjust the height as needed */
+    color: #fff; /* Text color on the banner */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .banner-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .banner-content h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .banner-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .shop-now-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color:black; /* Button background color */
+    color: #fff; /* Button text color */
+    font-size: 1.2rem;
+    height: 40px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+
+  .shop-now-button-div{
+    padding-top: 6rem;
+  }
+  
+  .shop-now-button:hover {
+    background-color:rgb(205, 196, 196); /* Hover state background color */
+  }
+  
+  @media(max-width:768px){
+    .banner{
+        margin-top: 4rem;
+    }
+  }

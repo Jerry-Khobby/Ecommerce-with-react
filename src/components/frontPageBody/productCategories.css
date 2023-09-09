@@ -1,0 +1,129 @@
+/* ProductList.css */
+
+
+.categories-list-heading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .categories-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 20px;
+       /* Adjust the gap between cards */
+       margin-top: 1px;
+       justify-content: center;
+       align-items: center;
+    }
+    
+    .categories-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 10px;
+      width: 145px;
+      height: 145px; /* Adjust the card width as needed */
+      background-color: #fff;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      padding-top: 2rem;
+      align-items: center;
+      justify-content: center;
+    }
+    
+.categories-card:hover{
+    background-color: #000;
+}
+.categories-card:hover .categories-name{
+    color: #fff;
+}
+    .categories-image {
+      max-width: 100%;
+      height: 120px;
+      width: 120px;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .categories-details {
+      padding: 10px;
+    }
+    
+    .categories-name {
+      font-size: .7rem;
+      font-weight: bold;
+    }
+    
+    .categories-price {
+      font-size: 1.2rem;
+      color: #007bff; /* Change the color to your preferred style */
+      margin-top: 8px;
+    }
+  
+  
+    @media(max-width:768px){
+      .categories-list-heading{
+        margin-top: 2rem;
+      }
+    }
+    @media(max-width:600px){
+      .cartegories-card{
+        width: 150px;
+      }
+    }
+    @media(max-width:400px){
+      .categories-list{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        gap: 4px;
+      }
+    }
+    @media(max-width:320px){
+      .categories-card{
+        width: 120px;
+      }
+    }
+    @media(max-width:280px){
+      .categories-card{
+        width: 100px;
+        height: 120px;
+      }
+      .categories-image{
+        width: 50px;
+        height: 40px;
+      }
+      .categories-name{
+        font-size: small !important;
+      }
+    }
+   @media(min-width:450px)and (max-width:500px){
+      .categories-card{
+        width: 100px;
+      }
+    }
+    @media(max-width:440px){
+      .categories-list{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        gap: 3px;
+      }
+    }
+    
+@media(max-width:600px){
+    .categories-card{
+        width: 110px;
+        height: 130px;
+    }
+}
+@media(max-width:500px){
+    .categories-list{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .categories-card{
+        width: 150px;
+        height: 150px;
+    }
+}

@@ -3,7 +3,9 @@
     border: 2px solid #313133;
     height: 2rem;
     align-items: center;
+    justify-content: space-around;
     border-radius: 8px;
+    width: 37vw;
 }
 .menu-item-cart{
     position: relative;
@@ -122,6 +124,7 @@ font-family:Georgia, 'Times New Roman', Times, serif;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    gap: 13rem;
     height: 50px;
     margin-top: 10px;
     box-shadow: 0 4px 4px -4px rgba(0,0,0,.12);
@@ -131,16 +134,12 @@ font-family:Georgia, 'Times New Roman', Times, serif;
 
 .search-container{
     display: flex;
+    margin-right: 3rem;
     gap: 10px;
-    margin-right: 4rem;
 }
-.search-box{
-    width: 37vw;
 
-}
 .search-icon{
-    padding-left: 10px;
-    gap: 5px;
+    padding: 0 10px;
     color: #313133;
 }
 .search-input{
@@ -167,8 +166,8 @@ outline: none;
 }
 
 .search-button{
-    height: 2rem;
     background-color:  #e8830e;
+    height: 30px;
     border: 1px solid  #b96a11;
     border-radius: 8px;
     width: 100px;
@@ -261,7 +260,7 @@ outline: none;
     font-size: 8px;
     align-items: center;
     justify-content: center;
-    
+    width: auto;
 }
 .cart-number{
     right: 0.7rem;
@@ -319,21 +318,9 @@ outline: none;
     gap: 2rem;
   }
 
-
-  @media(min-width:350px){
-    .search-container{
-        width: 100%;
-        display: flex;
-        align-items: center;
-    }
+@media(max-width:400px){
     .search-button{
-    width: 3.3rem;
-    font-size: 8px;
-    align-items: center;
-    justify-content: center;
+        height: 30px;
     }
-    .search-box{
-        width: 80%;
-    }
-  }
+}
 

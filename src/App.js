@@ -9,6 +9,8 @@ import Bookings from './components/productInfo/bookings';
 import { EmailProvider } from './context/email';
 import Layout from './Layout';
 import NewAccount from './components/registration/newaccount';
+import ShoppingPage from './components/productInfo/shoppingpage';
+import PreFooter from './components/footerSection/preFooter';
 import './App.css'
 
 
@@ -25,10 +27,12 @@ function App() {
 <Route index element={<FrontPage/>} exact/>
 <Route path="/cart/:productId" Component={ProductInfo} exact/>
 <Route path='/bookings' Component={Bookings} exact />
+<Route path='/shoppingpage' Component={ShoppingPage} exact/>
 </Route>
 <Route path="/signin" Component={Login} exact/>
 <Route path='/signup' Component={NewAccount} exact/>
 </Routes>
+<PreFooter />
    </BrowserRouter>
    </CartProvider>
    </EmailProvider>

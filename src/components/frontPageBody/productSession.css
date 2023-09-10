@@ -30,6 +30,10 @@
     padding-top: 2rem;
     align-items: center;
     justify-content: center;
+    transition: transform 0.2s ease;
+  }
+  .product-card:hover{
+    transform: scale(1.05);
   }
   
   .product-image {

@@ -23,7 +23,8 @@ const categories=[
         image: 'https://i.pinimg.com/236x/f0/96/48/f09648aa16874216237c845513ffe440.jpg',
         price: 39.99,
       },
-]
+];
 
 
-export default categories;
+
+export  default categories;

@@ -1,0 +1,137 @@
+/* ProductList.css */
+
+
+.menclothing-list-heading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4rem;
+  }
+
+  .menclothing-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 20px;
+       /* Adjust the gap between cards */
+       margin-top: 1px;
+       justify-content: center;
+       align-items: center;
+    }
+    
+    .menclothing-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 10px;
+      width: 145px;
+      height: 145px; /* Adjust the card width as needed */
+      background-color: #fff;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      padding-top: 2rem;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease;
+    }
+    
+.menclothing-card:hover{
+    background-color: #000;
+    transform: scale(1.05);
+}
+.menclothing-card:hover .menclothing-name {
+  color: #fff;
+}
+.menclothing-card:hover .menclothing-price{
+  color: #fff;
+
+}
+    .menclothing-image {
+      max-width: 100%;
+      height: 120px;
+      width: 120px;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .menclothing-details {
+      padding: 10px;
+    }
+    
+    .menclothing-name {
+      font-size: .7rem;
+      font-weight: bold;
+    }
+    
+    .menclothing-price {
+      font-size: 1rem;
+      color: #000; /* Change the color to your preferred style */
+      margin-top: 8px;
+    }
+  
+  
+    @media(max-width:768px){
+      .menclothing-list-heading{
+        margin-top: 2rem;
+      }
+    }
+    @media(max-width:600px){
+      .menclothing-card{
+        width: 150px;
+      }
+    }
+    @media(max-width:400px){
+      .menclothing-list{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        gap: 4px;
+      }
+    }
+    @media(max-width:320px){
+      .menclothing-card{
+        width: 120px;
+      }
+    }
+    @media(max-width:280px){
+      .menclothing-card{
+        width: 100px;
+        height: 120px;
+      }
+      .menclothing-image{
+        width: 50px;
+        height: 40px;
+      }
+      .menclothing-name{
+        font-size: small !important;
+      }
+    }
+   @media(min-width:450px)and (max-width:500px){
+      .menclothing-card{
+        width: 100px;
+      }
+    }
+    @media(max-width:440px){
+      .menclothing-list{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        gap: 3px;
+      }
+    }
+    
+@media(max-width:600px){
+    .menclothing-card{
+        width: 110px;
+        height: 130px;
+    }
+}
+@media(max-width:500px){
+    .menclothing-list{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .menclothing-card{
+        width: 150px;
+        height: 150px;
+    }
+}

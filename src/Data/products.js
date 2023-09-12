@@ -116,4 +116,6 @@ const products ={
   electronicDevices
 };
 
+export {menClothings,applephones,electronicDevices,childrenShoes}
+
 export default products;

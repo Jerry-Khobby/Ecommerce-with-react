@@ -35,5 +35,5 @@ const ProductSession = () => {
 
      );
 }
- 
+
 export default ProductSession;

@@ -19,7 +19,7 @@ const MenClothing= ({categorynames,header}) => {
           </div>
           <div className='menclothing-list'>
   {categorynames.map((categoryname) => (
-    <Link to={`/cart/${categoryname.id}`} style={{textDecoration:'none',color:'inherit'}}>
+    <Link to={`/cart/${header}/${categoryname.id}`} style={{textDecoration:'none',color:'inherit'}}>
     <Card  className="menclothing-card" key={categoryname.id}>
       <Card.Img src={categoryname.image} alt={categoryname.name} className="menclothing-image" />
       <Card.Body className="menclothing-details">

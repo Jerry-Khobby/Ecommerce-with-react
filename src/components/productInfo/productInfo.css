@@ -1,0 +1,109 @@
+.product-info-container-image-description{
+    margin-top: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    gap: 1.4rem;
+
+}
+.product-info-image{
+    transition: transform 0.2s ease;
+}
+
+.product-info-image:hover{
+  transform: scale(1.05);
+}
+.product-info-price{
+    font-size: 18px;
+    color: rgb(154, 157, 159);
+}
+.product-info-description{
+    width: 20vw;
+}
+.product-info-description>p{
+    font-size: 15px;
+}
+.quantity-icons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    flex-direction: column;
+    padding-bottom: 10px;
+   
+}
+
+.quantity-controls{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1px;
+}
+
+.quantity-controls{
+    padding: 8px;
+}
+.plus-icon-quantity{
+    background-color: rgb(170, 177, 182);
+    width: 30px;
+    height: 18px;
+    cursor: pointer;
+}
+.add-to-cart-button{
+    height: 32px;
+    width: 19vw;
+    border-radius: 4px;
+    background-color: rgba(255, 166, 0, 0.81);
+    border: none;
+    cursor: pointer;
+}
+@media(max-width:480px){
+    .product-info-container-image-description{
+        display: flex;
+        flex-direction: column;
+        margin-top: 4rem;
+    }
+    .product-info-description{
+width: 80vw;
+    }
+}
+
+
+@media(max-width:400px){
+    .plus-icon-quantity{
+        display: flex;
+        flex-direction: column;
+    }
+    .product-info-decription{
+        width: 70vw;
+    }
+
+    .add-to-cart-button{
+   width: 80vw;
+    }
+    .quantity-controls{
+        display: flex;
+        flex-direction: row;
+        gap: 6rem;
+    }
+}
+@media(max-width:320px){
+    .product-info-container-image-description{
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .product-info-image{
+        width: 290px;
+        height: 190px;
+    }
+}
+@media(max-width:300px){
+    .quantity-controls{
+        gap: 3rem;
+    }
+    .product-info-image{
+        margin-left: 10px;
+    }
+}

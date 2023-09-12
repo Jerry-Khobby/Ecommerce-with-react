@@ -56,7 +56,7 @@ useEffect(()=>{
           <div className="product-info-quantity">
             <div className='quantity-icons'>
             <h5>Quantity</h5>
-            <div className='quantity-controls'>
+            <div className='quantity-controls-one'>
                 <div>
                 <GoPlus className='plus-icon-quantity' onClick={addToCart}/>
                 </div>

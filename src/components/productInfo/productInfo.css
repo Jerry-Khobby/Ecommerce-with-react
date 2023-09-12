@@ -57,6 +57,7 @@
     background-color: rgba(255, 166, 0, 0.81);
     border: none;
     cursor: pointer;
+    color: #fff;
 }
 @media(max-width:480px){
     .product-info-container-image-description{

@@ -11,6 +11,7 @@ import Layout from './Layout';
 import NewAccount from './components/registration/newaccount';
 import ShoppingPage from './components/productInfo/shoppingpage';
 import PreFooter from './components/footerSection/preFooter';
+import CategoryCart from './components/productInfo/shoppingcomponents/cartegorycart';
 import './App.css'
 
 
@@ -26,6 +27,7 @@ function App() {
 {/** I will add my additional routes over here  */}
 <Route index element={<FrontPage/>} exact/>
 <Route path="/cart/:productId" Component={ProductInfo} exact/>
+<Route path="/cart/:header/:categoryId" Component={CategoryCart} exact/>
 <Route path='/bookings' Component={Bookings} exact />
 <Route path='/shoppingpage' Component={ShoppingPage} exact/>
 </Route>

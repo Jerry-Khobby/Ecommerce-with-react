@@ -83,7 +83,7 @@ const NewAccount = () => {
             </Grid>
           </Grid>
           <div className="continue_button">
-            <Link to="/">
+            <Link to="/" style={{textDecoration:'none'}}>
               <Button
                 type="submit"
                 variant="contained"

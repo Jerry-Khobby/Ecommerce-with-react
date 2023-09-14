@@ -64,7 +64,7 @@ const Store = () => {
              <button type='button' className='btn btn-default' style={{cursor:'pointer'}}>SIGN IN</button>
              </Link>
           </div>
-          <div className='dropdown-item'>
+          <div className='dropdown-item' >
           <div className="dropdown-item-account">
              <AiOutlineUser/>
              <Link to='/signin' style={{textDecoration:'none',color:'inherit'}}>

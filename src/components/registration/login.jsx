@@ -50,7 +50,7 @@ const Login = () => {
             onChange={handleInputChange}
             style={{ marginBottom: '20px', width: '' }}
           />
-          <Link to="/signup">
+          <Link to="/signup" style={{textDecoration:'none'}}>
             <Button
               type="submit"
               fullWidth

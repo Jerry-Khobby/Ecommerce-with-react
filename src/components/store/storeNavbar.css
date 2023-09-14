@@ -58,10 +58,11 @@
 position: absolute;
 top: 3rem;
 right: 3rem;
-box-shadow: 0 4px 4px -4px rgba(0,0,0,.12);
+box-shadow: 0 4px 4px -4px rgba(9, 8, 8, 0.12);
 height: 9rem;
 width: 14rem;
-border: 1px solid rgba(0,0,0,.12);
+border: 2px solid rgba(0,0,0,.12);
+background-color: aliceblue;
 border-radius: 8px;
 
   }

@@ -1,61 +1,80 @@
-import React,{useState}from 'react'
+import React, { useState } from 'react';
 import './Login.css';
 import myjumia from '../../images/myjumia-top-logo.png';
-import facebook from '../../images/facebook.png';
 import { Link } from 'react-router-dom';
-import {useEmail} from '../../context/email';
-
+import { useEmail } from '../../context/email';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import TextField from '@mui/material/TextField';
 
 const Login = () => {
+  const [inputValue, setInputValue] = useState('');
+  const { setEmail } = useEmail();
 
-    const [inputValue,setInputValue]=useState('');
-    const {setEmail}=useEmail();
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+    setEmail(e.target.value);
+  };
 
-    const handleInputChange=(e)=>{
-        setInputValue(e.target.value);
-        setEmail(e.target.value);
-    }
-    const handleSubmit=(e)=>{
-        e.preventDefault();
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Your form submission logic goes here
+  };
 
-    return ( 
-        <div className='login_master_container'>
-            <div className='login_text_container'>
-                <div>
-                    <img src={myjumia} alt="Jumia Logo" height={55} width={55}/>
-                    </div>
-                <div>
-                    <h2>Welcome to Jumia</h2>
-                    </div>
-                <div>
-                    <p>Type your e-mail or phone number to log in or create a Jumia <span>account.</span></p>
-                    </div>
-            </div>
-            <form  onSubmit={handleSubmit}>
-            <div className='login_input_container'>
-                <input type="email" name="email or number"  value={inputValue} required className='login_input' onChange={handleInputChange}/>
-            </div>
-            <div>
-                <Link to="/signup">
-                <button  className='login_button_continue' style={{cursor:'pointer'}}>Continue</button>
-                </Link>
-                </div>
-            <div>
-                <button className='login_button_facebook' type="submit"><img src={facebook} alt="facebook logo" height={16} width={16}/>Log in with Facebook </button>
-                </div>
-                </form>
-            <div className='login_footer_container'>
-                <div>
-                    <p>For further support, you may visit the Help Center or contact our                     <span>customer service team.</span></p>
-
-                </div>
-                <div className='login_footer_text'>
-                   <h5>JUMIA <img src={myjumia} alt="bottomLogo" height={16} width={16}/></h5> 
-                </div>
-            </div>
+  return (
+    <Container component="main" maxWidth="lg" style={{height:'80vh'}}>
+      <div className="login_master_container">
+        <div className="login_text_container">
+          <img src={myjumia} alt="Jumia Logo" height={55} width={55} />
+          <Typography component="h2" variant="h5">
+            Welcome to Jumia
+          </Typography>
+          <Typography variant="body2">
+            Type your e-mail or phone number to log in or create a Jumia{' '}
+            <span>account.</span>
+          </Typography>
         </div>
-     );
-}
- 
+        <form onSubmit={handleSubmit}>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            autoFocus
+            value={inputValue}
+            onChange={handleInputChange}
+            style={{ marginBottom: '20px', width: '' }}
+          />
+          <Link to="/signup">
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              style={{marginBottom:'50px',width: ''}}
+            >
+              Continue
+            </Button>
+          </Link>
+          <Button
+            fullWidth
+            variant="contained"
+            color="secondary"
+            startIcon={<FacebookIcon />}
+            className="facebook-button"
+            style={{marginBottom:'50px'}}
+          >
+            Log in with Facebook
+          </Button>
+        </form>
+      </div>
+    </Container>
+  );
+};
+
 export default Login;

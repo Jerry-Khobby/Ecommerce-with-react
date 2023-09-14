@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import myjumia from '../../images/myjumia-top-logo.png';
 import { Link } from 'react-router-dom';
-//import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
-import './newaccount.css';
-import {useEmail} from '../../context/email';
+import './newaccount.css'; // Note: Ensure that the CSS file name matches your component name
+import { useEmail } from '../../context/email';
+import { TextField, Button, Container, Typography, Grid } from '@mui/material';
 
 const NewAccount = () => {
   const [inputs, setInputs] = useState({
@@ -21,81 +21,95 @@ const NewAccount = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    //const { password1, password2 } = inputs;
+    // const { password1, password2 } = inputs;
   };
 
-  const {email}=useEmail();
+  const { email } = useEmail();
 
   return (
-    <div className='login_master_container'>
-      <div className='login_text_container'>
-        <div>
-          <img src={myjumia} alt='Jumia Logo' height={55} width={55} />
+    <Container component="main" maxWidth="lg" style={{height:'80vh'}}>
+      <div className="login_master_container">
+        <div className="login_text_container">
+          <img src={myjumia} alt="Jumia Logo" height={55} width={55} />
+          <Typography variant="h4">Create your account</Typography>
+          <Typography variant="body1">
+            Let's get started by creating your account. To keep your account
+            safe, we need a strong password
+          </Typography>
         </div>
-        <div>
-          <h2>Create your account</h2>
-        </div>
-        <div>
-          <p>
-            Let's get started by creating your account.
-            To keep your account safe, we need a strong password
-          </p>
-        </div>
-      </div>
-      <form onSubmit={handleSubmit}>
-        <div className='password_input'>
-          <input 
-          type='email' 
-          name='email' 
-          placeholder={email} 
-          readOnly='true' 
-          className='password_input_text'
-          />
-          <Link to="/" style={{paddingRight:10,fontSize:13,textDecoration:'none',color:'orange'}}>Edit</Link>
-        </div>
-
-        <div className='password_input'>
-          <input
-            type='password'
-            name='password1'
-            placeholder='Password'
-            required
-            value={inputs.password1}
-            onChange={handleChange}
-            className='password_input_text'  
-          />
-        </div>
-        <div className='password_input'>
-          <input
-            type='password'
-            name='password2'
-            placeholder='Confirm Password'
-            required
-            value={inputs.password2}
-            onChange={handleChange}
-            className='password_input_text'
-          />
-        </div>
-        <div className='continue_button'>
-          <Link to='/'>
-            <button type='submit' className='login_button_continue' style={{cursor:'pointer'}}>Continue</button>
-          </Link>
-        </div>
-      </form>
-      <div className='login_footer_container'>
-        <div>
-          <p>
+        <form onSubmit={handleSubmit}>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                variant="outlined"
+                name="email"
+                label="Email"
+                value={email}
+                InputProps={{
+                  readOnly: true,
+                }}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+              <Link to="/" style={{ fontSize: 13, textDecoration: 'none', color: 'orange' }}>
+                Edit
+              </Link>
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                variant="outlined"
+                type="password"
+                name="password1"
+                label="Password"
+                required
+                value={inputs.password1}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                variant="outlined"
+                type="password"
+                name="password2"
+                label="Confirm Password"
+                required
+                value={inputs.password2}
+                onChange={handleChange}
+              />
+            </Grid>
+          </Grid>
+          <div className="continue_button">
+            <Link to="/">
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                fullWidth
+                style={{ cursor: 'pointer',marginTop:'10px' }}
+              >
+                Continue
+              </Button>
+            </Link>
+          </div>
+        </form>
+        <div className="login_footer_container">
+          <Typography variant="body2">
             For further support, you may visit the Help Center or contact our{' '}
             <span>customer service team.</span>
-          </p>
-        </div>
-        <div className='login_footer_text'>
-          <h5>
-            JUMIA <img src={myjumia} alt='bottomLogo' height={16} width={16} />
-          </h5>
+          </Typography>
+          <div className="login_footer_text">
+            <Typography variant="h5">
+              JUMIA{' '}
+              <img src={myjumia} alt="bottomLogo" height={16} width={16} />
+            </Typography>
+          </div>
         </div>
       </div>
-    </div>
+    </Container>
   );
 };
 

@@ -20,6 +20,7 @@ import './App.css'
 
 
 function App() {
+
   return (
     <div className='app-container'>
     <EmailProvider>
@@ -40,10 +41,11 @@ function App() {
 <Route path="/signin" Component={Login} exact/>
 <Route path='/signup' Component={NewAccount} exact/>
 </Routes>
-<PreFooter />
+
    </BrowserRouter>
    </CartProvider>
    </EmailProvider>
+<PreFooter/>
    </div>
   );
 }

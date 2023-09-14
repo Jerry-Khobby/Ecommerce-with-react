@@ -11,15 +11,19 @@ export function CartProvider({children}){
     const [quantity,setQuantity]=useState(0);
 
     const addToCart=()=>{
-        setCartCount(cartCount+quantity);
         setQuantity(quantity+1);
+        setCartCount(quantity);
+        if(quantity===0){
+            setCartCount(cartCount+1);
+        }
     };
 
     const removeFromCart=()=>{
         if(cartCount>0){
-        setCartCount(cartCount-1);
+    setCartCount(cartCount-1); 
+    }
+    if(quantity>0){
         setQuantity(quantity-1);
-        
     }
 };
 

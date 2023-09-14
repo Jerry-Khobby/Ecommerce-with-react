@@ -12,10 +12,10 @@ const ShoppingPage = () => {
     const {electronicDevices}=products;
     return (  
         <div>
-<MenClothing categorynames={menClothings} header="Men Clothings"/>
-<MenClothing categorynames={applephones} header="Apple Devices"/>
-<MenClothing categorynames={childrenShoes} header="Children Shoes"/>
-<MenClothing categorynames={electronicDevices} header="Electronic Devices"/>
+<MenClothing categorynames={menClothings} header="Men Clothings" route="/cart/MenClothing"/>
+<MenClothing categorynames={applephones} header="Apple Devices"  route="/cart/AppleDevices"/>
+<MenClothing categorynames={childrenShoes} header="Children Shoes"  route="/cart/ChildrenShoes"/>
+<MenClothing categorynames={electronicDevices} header="Electronic Devices"  route="/cart/electronicDevices"/>
 </div>
     );
 }

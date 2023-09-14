@@ -11,7 +11,7 @@ import './menclothing.css';
 
 
 
-const MenClothing= ({categorynames,header}) => {
+const MenClothing= ({categorynames,header,route}) => {
     return ( 
         <div className="menclothing-list-heading">
           <div className='menclothing-heading-featured'>
@@ -19,7 +19,7 @@ const MenClothing= ({categorynames,header}) => {
           </div>
           <div className='menclothing-list'>
   {categorynames.map((categoryname) => (
-    <Link to={`/cart/${header}/${categoryname.id}`} style={{textDecoration:'none',color:'inherit'}}>
+    <Link  to ={`${route}/${categoryname.id}`} style={{textDecoration:'none',color:'inherit'}}>
     <Card  className="menclothing-card" key={categoryname.id}>
       <Card.Img src={categoryname.image} alt={categoryname.name} className="menclothing-image" />
       <Card.Body className="menclothing-details">

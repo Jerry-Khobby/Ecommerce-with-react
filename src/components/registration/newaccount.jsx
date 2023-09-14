@@ -32,7 +32,7 @@ const NewAccount = () => {
         <div className="login_text_container">
           <img src={myjumia} alt="Jumia Logo" height={55} width={55} />
           <Typography variant="h4">Create your account</Typography>
-          <Typography variant="body1">
+          <Typography variant="body1" style={{marginBottom:'15px'}}>
             Let's get started by creating your account. To keep your account
             safe, we need a strong password
           </Typography>
@@ -96,18 +96,6 @@ const NewAccount = () => {
             </Link>
           </div>
         </form>
-        <div className="login_footer_container">
-          <Typography variant="body2">
-            For further support, you may visit the Help Center or contact our{' '}
-            <span>customer service team.</span>
-          </Typography>
-          <div className="login_footer_text">
-            <Typography variant="h5">
-              JUMIA{' '}
-              <img src={myjumia} alt="bottomLogo" height={16} width={16} />
-            </Typography>
-          </div>
-        </div>
       </div>
     </Container>
   );

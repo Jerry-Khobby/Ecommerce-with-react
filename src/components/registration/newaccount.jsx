@@ -53,7 +53,7 @@ const NewAccount = () => {
                   shrink: true,
                 }}
               />
-              <Link to="/" style={{ fontSize: 13, textDecoration: 'none', color: 'orange' }}>
+              <Link to="/signin" style={{ fontSize: 13, textDecoration: 'none', color: 'orange' }}>
                 Edit
               </Link>
             </Grid>

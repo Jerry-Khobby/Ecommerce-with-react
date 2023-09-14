@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import jumialogo from '../../images/Jumia-Logo.png';
 import { FaSearch } from 'react-icons/fa';
- import {AiOutlineUser,AiOutlineInbox,AiOutlineHeart} from 'react-icons/ai';
+ import {AiOutlineUser,AiOutlineInbox,} from 'react-icons/ai';
 import './storeNavbar.css';
 //import DropDownMenuItem from '../store/itemNavbar';
 import {AiOutlineShoppingCart} from 'react-icons/ai'
@@ -75,12 +75,6 @@ const Store = () => {
              <AiOutlineInbox/>
              <Link to='/signin' style={{textDecoration:'none',color:'inherit'}}>
              <div>Orders</div>
-             </Link>
-          </div>
-          <div className='dropdown-item-savedItem'>
-             <AiOutlineHeart/>
-             <Link to='/signin' style={{textDecoration:'none',color:'inherit'}}>
-             <div>Saved Items</div>
              </Link>
           </div>
           </div>

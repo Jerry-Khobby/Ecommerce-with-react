@@ -16,13 +16,15 @@ import CategoryCartApplephones from './components/productInfo/shoppingcomponents
 import CategoryCartElectronic from './components/productInfo/shoppingcomponents/categoryelectronic';
 import CategoryCartChildrenShoes from './components/productInfo/shoppingcomponents/categorychildrenshoes';
 import './App.css'
-
+import { Provider } from 'react-redux';
+import store from './state/store';
 
 
 function App() {
 
   return (
     <div className='app-container'>
+      <Provider store={store}>
     <EmailProvider>
     <CartProvider>
    <BrowserRouter>
@@ -45,6 +47,7 @@ function App() {
    </BrowserRouter>
    </CartProvider>
    </EmailProvider>
+   </Provider>
 <PreFooter/>
    </div>
   );

@@ -17,6 +17,11 @@ useEffect(()=>{
         setCartCount(parseInt(storedQuantity,10));
     }
 },[]);
+
+
+
+
+
     const addToCart=()=>{
         setQuantity(quantity+1);
         setCartCount(quantity+1);

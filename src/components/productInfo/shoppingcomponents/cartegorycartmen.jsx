@@ -1,46 +1,40 @@
-import React,{useEffect, useState} from 'react'
+import React,{useState} from 'react'
 import {useParams} from 'react-router-dom';
 import {GoPlus} from 'react-icons/go';
 import {RxMinus} from 'react-icons/rx';
-import { useCart } from '../../../context/CartContext';
+/* import { useCart } from '../../../context/CartContext'; */
 import FrontPage from '../../frontPageBody/productSession';
 import {menClothings} from '../../../Data/products';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart, increaseQuantity, findItemAndDecrease, deleteItem, itemsInCart } from '../../../state/reducers';
+
 
 const CategoryCartMenClothing = () => {
     const {categoryId} =useParams();
     const product =menClothings.find((p)=>p.id===parseInt(categoryId));
 
-    const { addToCart,removeFromCart,cartCount,setCartCount,quantity } = useCart();
-    const[isButtonDisabled,setIsButtonDisabled] =useState(false);
 
-    useEffect(()=>{
-        const storedCartCount =localStorage.getItem('cartCount');
-        if(storedCartCount!==null){
-            setCartCount(parseInt(storedCartCount));
-        }
-          },[setCartCount])
+    const cartItem=useSelector(itemsInCart);
+    const dispatch =useDispatch();
 
-
-          
-useEffect(()=>{
-    localStorage.setItem('cartCount',cartCount.toString());
-},[cartCount])
-
-  if (!product) {
-    return <div className="product-not-found">Product not Found</div>;
-  }
-
-  //
-
-
-  const handleAddToCart=()=>{
-    if(cartCount===0){
-      addToCart();
-      setIsButtonDisabled(true);
-    }else if(cartCount===1){
-      setIsButtonDisabled(true);
+    const handleAddToCart =()=>{
+      const {id,name,price,image}=product;
+      const existingItem=cartItem.find(item=>item.id===id);
+      if(existingItem) {
+        dispatch(increaseQuantity(existingItem.id));
+      }else{
+        dispatch(
+          addToCart({
+            id,
+            name,
+            price,
+            quantity:0,
+            image,
+          })
+        )
+      }
     }
-  }
+
 
 
     return ( 
@@ -70,20 +64,20 @@ useEffect(()=>{
               <h5>Quantity</h5>
               <div className='quantity-controls-one'>
                   <div>
-                  <GoPlus className='plus-icon-quantity' onClick={addToCart}/>
+                  <GoPlus className='plus-icon-quantity' onClick={{}}/>
                   </div>
                   <div>
-                  <p>{quantity}</p>
+                  <p>{{}}</p>
                   </div>
                   <div>
-                  <RxMinus className='plus-icon-quantity' onClick={removeFromCart}/>
+                  <RxMinus className='plus-icon-quantity' onClick={{}}/>
                   </div>
               </div>
               </div>
             </div>
             <div className="product-info-add-to-cart">
-              <button onClick={handleAddToCart} className="add-to-cart-button" disabled={isButtonDisabled}>
-                {isButtonDisabled?'Add to Cart':'Add to Cart'}
+              <button onClick={handleAddToCart} className="add-to-cart-button" disabled={{}}>
+                Add to Cart
               </button>
             </div>
           </div>

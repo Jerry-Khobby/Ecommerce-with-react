@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React,{useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom';
 import {GoPlus} from 'react-icons/go';
 import {RxMinus} from 'react-icons/rx';
@@ -11,6 +11,7 @@ const CategoryCartMenClothing = () => {
     const product =menClothings.find((p)=>p.id===parseInt(categoryId));
 
     const { addToCart,removeFromCart,cartCount,setCartCount,quantity } = useCart();
+    const[isButtonDisabled,setIsButtonDisabled] =useState(false);
 
     useEffect(()=>{
         const storedCartCount =localStorage.getItem('cartCount');
@@ -28,6 +29,19 @@ useEffect(()=>{
   if (!product) {
     return <div className="product-not-found">Product not Found</div>;
   }
+
+  //
+
+
+  const handleAddToCart=()=>{
+    if(cartCount===0){
+      addToCart();
+      setIsButtonDisabled(true);
+    }else if(cartCount===1){
+      setIsButtonDisabled(true);
+    }
+  }
+
 
     return ( 
         <div className="product-info-container">
@@ -68,8 +82,8 @@ useEffect(()=>{
               </div>
             </div>
             <div className="product-info-add-to-cart">
-              <button onClick={addToCart} className="add-to-cart-button">
-                Add to Cart
+              <button onClick={handleAddToCart} className="add-to-cart-button" disabled={isButtonDisabled}>
+                {isButtonDisabled?'Add to Cart':'Add to Cart'}
               </button>
             </div>
           </div>

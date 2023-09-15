@@ -4,7 +4,7 @@ import './bookings.css'
 
 const Bookings = () => {
   return (
-    <div>
+    <div style={{height:'80vh'}}>
       <h1> It Is Under constructions;</h1>
     </div>
   )

@@ -6,36 +6,74 @@ import {RxMinus} from 'react-icons/rx';
 import FrontPage from '../../frontPageBody/productSession';
 import {menClothings} from '../../../Data/products';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart, increaseQuantity, findItemAndDecrease, deleteItem, itemsInCart } from '../../../state/reducers';
+import { addToCart, increaseQuantity, itemsInCart } from '../../../state/reducers';
+import {Button, ButtonBase,} from '@mui/material'
 
 
 const CategoryCartMenClothing = () => {
+const dispatch=useDispatch();
     const {categoryId} =useParams();
     const product =menClothings.find((p)=>p.id===parseInt(categoryId));
 
+  
+const [counter,setCounter]=useState(0);
 
-    const cartItem=useSelector(itemsInCart);
-    const dispatch =useDispatch();
+const increaseCounter=()=>{
+  setCounter(counter+1)
+}
 
-    const handleAddToCart =()=>{
-      const {id,name,price,image}=product;
-      const existingItem=cartItem.find(item=>item.id===id);
-      if(existingItem) {
-        dispatch(increaseQuantity(existingItem.id));
-      }else{
-        dispatch(
-          addToCart({
-            id,
-            name,
-            price,
-            quantity:0,
-            image,
-          })
-        )
-      }
-    }
+const decreaseCounter=()=>{
+  if(counter>0){
+    setCounter(counter-1)
+  }
+}
+
+const cartItems=useSelector(itemsInCart);
+
+const handleAddToCart=()=>{
+  const existingItem=cartItems.find((item)=>item.id===product.id);
+  if(existingItem) {
+    dispatch(increaseQuantity({
+      id:product.id,
+    }))
+  }else{
+    dispatch(
+      addToCart(
+        product.id,
+        product.name,
+        product.price,
+        counterValue,
+        product.image
+      )
+    )
+  }
+}
+
+const cartItem=cartItems.filter(el=>el.id===product.id ? el:null) 
+
+//specifying which counter value to show 
+const carBtn=()=>{
+  if(cartItem.length>0){
+    return<>
+      <ButtonBase sx={{font: "inherit", background: "#D3D3D3",p:"8px",color:"white", borderRadius:"5px"}}>Added to cart</ButtonBase>
+    </>
+  }
+  return <>
+   <Button sx={{textTransform: "lowercase", color: "black", border: "1px solid black", transition: "all .1s ease",
+                                "&:hover": {
+                                    background: "black",
+                                    color: "white",}}} onClick={ handleAddToCart}
+                                       /*   setAddedToCart(true) */
+                                       >Add to cart</Button>
+  </>
+}
 
 
+const counterValue = () => {
+  if(cartItem.length > 0){
+      
+  }
+}
 
     return ( 
         <div className="product-info-container">
@@ -64,21 +102,21 @@ const CategoryCartMenClothing = () => {
               <h5>Quantity</h5>
               <div className='quantity-controls-one'>
                   <div>
-                  <GoPlus className='plus-icon-quantity' onClick={{}}/>
+                  <GoPlus className='plus-icon-quantity' onClick={increaseCounter}/>
+                  </div>
+                   <div>
+                  <p>{counter}</p>
                   </div>
                   <div>
-                  <p>{{}}</p>
-                  </div>
-                  <div>
-                  <RxMinus className='plus-icon-quantity' onClick={{}}/>
+                  <RxMinus className='plus-icon-quantity' onClick={decreaseCounter}/>
                   </div>
               </div>
               </div>
             </div>
             <div className="product-info-add-to-cart">
-              <button onClick={handleAddToCart} className="add-to-cart-button" disabled={{}}>
-                Add to Cart
-              </button>
+            {
+              carBtn()
+            }
             </div>
           </div>
         </div>

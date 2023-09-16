@@ -6,8 +6,8 @@ import './storeNavbar.css';
 //import DropDownMenuItem from '../store/itemNavbar';
 import {AiOutlineShoppingCart} from 'react-icons/ai'
 import {Link} from 'react-router-dom'
-import { useCart } from '../../context/CartContext';
 import {BiUserCircle} from 'react-icons/bi'
+import { useSelector } from 'react-redux';
 
 
 
@@ -19,7 +19,12 @@ const Store = () => {
         setIsDropdownOpen(!isDropdownOpen);
     }
 
-    const {cartCount}=useCart();
+    const quantity = useSelector((state) => {
+      // Assuming you have set up your Redux store correctly, and you have a 'cart' slice
+      return state.cart.cartItems.reduce((totalQuantity, item) => {
+        return totalQuantity + item.quantity;
+      }, 0);
+    });
 
   return (
     <div className="store-container">
@@ -49,7 +54,7 @@ const Store = () => {
       <div className='cart-icon-count-container'>
           <AiOutlineShoppingCart size={28}/>
         <div className='cart-number'>
-          <p>{cartCount}</p>
+          <p>{quantity}</p>
         </div>
       </div>
       </Link>

@@ -17,7 +17,7 @@ import CategoryCartElectronic from './components/productInfo/shoppingcomponents/
 import CategoryCartChildrenShoes from './components/productInfo/shoppingcomponents/categorychildrenshoes';
 import './App.css'
 import { Provider } from 'react-redux';
-import store from './state/store';
+import store from '../src/state/store';
 
 
 function App() {
@@ -47,8 +47,8 @@ function App() {
    </BrowserRouter>
    </CartProvider>
    </EmailProvider>
-   </Provider>
 <PreFooter/>
+</Provider>
    </div>
   );
 }

@@ -2,76 +2,59 @@ import React,{useState} from 'react'
 import {useParams} from 'react-router-dom';
 import {GoPlus} from 'react-icons/go';
 import {RxMinus} from 'react-icons/rx';
-/* import { useCart } from '../../../context/CartContext'; */
 import FrontPage from '../../frontPageBody/productSession';
 import {menClothings} from '../../../Data/products';
-import { useDispatch, useSelector } from 'react-redux';
-import { addToCart, increaseQuantity, itemsInCart } from '../../../state/reducers';
-import {Button, ButtonBase,} from '@mui/material'
-
+import { addToCart,updateQuantity } from '../../../state/reducers';
+import { useDispatch,useSelector } from 'react-redux';
 
 const CategoryCartMenClothing = () => {
-const dispatch=useDispatch();
     const {categoryId} =useParams();
     const product =menClothings.find((p)=>p.id===parseInt(categoryId));
+//dispatching the redux first 
+    const dispatch =useDispatch();
+    const cartItems =useSelector((state)=>state.cart.cartItems);
 
-  
-const [counter,setCounter]=useState(0);
-
-const increaseCounter=()=>{
-  setCounter(counter+1)
-}
-
-const decreaseCounter=()=>{
-  if(counter>0){
-    setCounter(counter-1)
-  }
-}
-
-const cartItems=useSelector(itemsInCart);
+const existingItem = cartItems.find((item) => item.id === product.id);
+const initialQuantity =existingItem ? existingItem.quantity :0
+const [quantity, setQuantity] = useState(initialQuantity);
 
 const handleAddToCart=()=>{
-  const existingItem=cartItems.find((item)=>item.id===product.id);
-  if(existingItem) {
-    dispatch(increaseQuantity({
-      id:product.id,
+  if(quantity===0){
+    setQuantity(1);
+    dispatch(addToCart(product));
+    dispatch(updateQuantity({
+id:product.id,
+quantity:1,
     }))
-  }else{
-    dispatch(
-      addToCart(
-        product.id,
-        product.name,
-        product.price,
-        counterValue,
-        product.image
-      )
-    )
+  }
+  if(quantity>0){
+    setQuantity(quantity)
+    dispatch(addToCart(product));
+    dispatch(updateQuantity({
+      id:product.id,
+      quantity:quantity,
+    }))
+  }
+  if(!existingItem){
+    dispatch(addToCart(product));
   }
 }
 
-const cartItem=cartItems.filter(el=>el.id===product.id ? el:null) 
-
-//specifying which counter value to show 
-const carBtn=()=>{
-  if(cartItem.length>0){
-    return<>
-      <ButtonBase sx={{font: "inherit", background: "#D3D3D3",p:"8px",color:"white", borderRadius:"5px"}}>Added to cart</ButtonBase>
-    </>
-  }
-  return <>
-   <Button sx={{textTransform: "lowercase", color: "black", border: "1px solid black", transition: "all .1s ease",
-                                "&:hover": {
-                                    background: "black",
-                                    color: "white",}}} onClick={ handleAddToCart}
-                                       /*   setAddedToCart(true) */
-                                       >Add to cart</Button>
-  </>
+const increaseCounter=()=>{
+  setQuantity(quantity+1);
+  dispatch(updateQuantity({
+    id:product.id,
+    quantity:quantity+1,
+  }))
 }
 
-
-const counterValue = () => {
-  if(cartItem.length > 0){
-      
+const decreaseCounter = () => {
+  if(quantity > 0){
+     setQuantity(quantity-1);
+     dispatch(updateQuantity({
+      id:product.id,
+      quantity:quantity-1,
+     }))
   }
 }
 
@@ -104,8 +87,8 @@ const counterValue = () => {
                   <div>
                   <GoPlus className='plus-icon-quantity' onClick={increaseCounter}/>
                   </div>
-                   <div>
-                  <p>{counter}</p>
+                  <div>
+                  <p>{quantity}</p>
                   </div>
                   <div>
                   <RxMinus className='plus-icon-quantity' onClick={decreaseCounter}/>
@@ -114,9 +97,9 @@ const counterValue = () => {
               </div>
             </div>
             <div className="product-info-add-to-cart">
-            {
-              carBtn()
-            }
+              <button onClick={handleAddToCart} className="add-to-cart-button">
+                Add to Cart
+              </button>
             </div>
           </div>
         </div>

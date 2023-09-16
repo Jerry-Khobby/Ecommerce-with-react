@@ -4,7 +4,7 @@ import {GoPlus} from 'react-icons/go';
 import {RxMinus} from 'react-icons/rx';
 import FrontPage from '../../frontPageBody/productSession';
 import {menClothings} from '../../../Data/products';
-import { addToCart,updateQuantity } from '../../../state/reducers';
+import { addToCart,updateQuantity,removeFromCart } from '../../../state/reducers';
 import { useDispatch,useSelector } from 'react-redux';
 
 const CategoryCartMenClothing = () => {
@@ -55,6 +55,10 @@ const decreaseCounter = () => {
       id:product.id,
       quantity:quantity-1,
      }))
+  }
+  //check if the quantity will become zero after decreasing 
+  if(quantity -1===0){
+    dispatch(removeFromCart(product));
   }
 }
 

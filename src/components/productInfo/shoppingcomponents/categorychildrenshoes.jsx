@@ -15,8 +15,13 @@ const CategoryCartChildrenShoes = () => {
   const cartItems =useSelector((state)=>state.cart.cartItems);
 
 const existingItem = cartItems.find((item) => item.id === product.id);
-const initialQuantity =existingItem ? existingItem.quantity :0
+const initialQuantity =existingItem ? existingItem.quantity :1
 const [quantity, setQuantity] = useState(initialQuantity);
+
+
+
+//for displaying  the message  state 
+const [showSuccessMessage,setShowSuccessMessage]=useState(false);
 
 const handleAddToCart=()=>{
 if(quantity===0){
@@ -27,17 +32,14 @@ id:product.id,
 quantity:1,
   }))
 }
-if(quantity>0){
-  setQuantity(quantity)
-  dispatch(addToCart(product));
-  dispatch(updateQuantity({
-    id:product.id,
-    quantity:quantity,
-  }))
-}
+
 if(!existingItem){
   dispatch(addToCart(product));
 }
+setShowSuccessMessage(true);
+setTimeout(()=>{
+  setShowSuccessMessage(false);
+},3000);
 }
 
 const increaseCounter=()=>{
@@ -59,6 +61,7 @@ if(quantity > 0){
 }
     return ( 
         <div className="product-info-container">
+             {showSuccessMessage &&<p className='sucess-message'>Item added Successfully</p>}
         <div className="product-info-container-image-description">
           <div className="product-info-container-image">
             <img

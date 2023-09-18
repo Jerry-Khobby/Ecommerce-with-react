@@ -1,0 +1,14 @@
+.sucess-message{
+    background-color: orange;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    margin-top: 6px;
+    margin-left: 7px;
+}
+@media(max-width:768px){
+.sucess-message{
+    margin-top: 3rem;
+}
+}

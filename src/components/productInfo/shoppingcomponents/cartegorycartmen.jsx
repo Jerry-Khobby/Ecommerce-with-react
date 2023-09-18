@@ -15,29 +15,30 @@ const CategoryCartMenClothing = () => {
     const cartItems =useSelector((state)=>state.cart.cartItems);
 
 const existingItem = cartItems.find((item) => item.id === product.id);
-const initialQuantity =existingItem ? existingItem.quantity: 1;
+const initialQuantity =existingItem ? existingItem.quantity: 0;
 const [quantity, setQuantity] = useState(initialQuantity);
 
 
 //for displaying  the message  state 
 const [showSuccessMessage,setShowSuccessMessage]=useState(false);
 
+
+//disabling the cart button after rendering it once 
+const [isInCart, setIsInCart] = useState(existingItem !== undefined);
+
 const handleAddToCart=()=>{
   if(quantity===0){
     setQuantity(1);
     dispatch(addToCart(product));
-    dispatch(updateQuantity({
-id:product.id,
-quantity:1,
-    }))
 }
   if(!existingItem){
     dispatch(addToCart(product));
+    setIsInCart(true);
   }
   setShowSuccessMessage(true);
   setTimeout(()=>{
     setShowSuccessMessage(false);
-  },3000);
+  },2000);
 }
 
 const increaseCounter=()=>{
@@ -57,7 +58,7 @@ const decreaseCounter = () => {
      }))
   }
   //check if the quantity will become zero after decreasing 
-  if(quantity -1===0){
+  if(quantity-1===0){
     dispatch(removeFromCart(product));
   }
 }
@@ -105,9 +106,16 @@ const decreaseCounter = () => {
               </div>
             </div>
             <div className="product-info-add-to-cart">
+            {!isInCart &&(
               <button onClick={handleAddToCart} className="add-to-cart-button">
                 Add to Cart
               </button>
+    )}
+    {isInCart &&(
+      <button onClick={handleAddToCart} className="add-to-cart-button" disabled={true}>
+      Add to Cart
+    </button>
+    )}
             </div>
           </div>
         </div>

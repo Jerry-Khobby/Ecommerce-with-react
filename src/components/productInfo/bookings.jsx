@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState,useEffect}from 'react'
 import './bookings.css';
 import {useSelector,useDispatch} from "react-redux";
 import { Box, Container, Typography, Button } from '@mui/material'
@@ -17,6 +17,25 @@ const Bookings = () => {
   const cartItems =useSelector((state)=>state.cart.cartItems);
 
 
+  //calculating for the pricing of the subtotal and working towards that
+  const [totalPrice,setTotalPrice]=useState(0);
+
+  const calculateTotalPrice=()=>{
+    let total =0;
+    for(const item of cartItems){
+      total+=item.price*item.quantity;
+    }
+    return total;
+  }
+
+  //update the total price whenever cart items
+  useEffect(()=>{
+    const newTotalPrice=calculateTotalPrice();
+    setTotalPrice(newTotalPrice);
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[cartItems])
+
+
   //defining my functions to perform my work for me 
   const increaseCounter=(item)=>{
     dispatch(updateQuantity({
@@ -30,7 +49,10 @@ const Bookings = () => {
       dispatch(updateQuantity({
         id:item.id,
         quantity:item.quantity-1,
-      }))
+      })
+      );
+      const newTotalPrice=calculateTotalPrice();
+      setTotalPrice(newTotalPrice);
     }
     if(item.quantity-1===0){
       dispatch(removeFromCart({
@@ -109,6 +131,35 @@ const clearItem=(item)=>{
       }
  </Container>
       ))}
+
+<Container sx={{marginTop:18,display:"flex",alignItems:"center",justifyContent:"center"}}>
+  {/** I will put my payments methods over here  */}
+  <Box sx={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:"1rem",width:"250px",height:"180px",borderRadius:"2rem", background:"#d3d3d3",}}
+  >
+    <Typography>
+      CART SUMMARY
+    </Typography>
+<Typography>
+  Subtotal:${totalPrice.toFixed(2)}
+</Typography>
+<Button
+variant="outlined"
+sx={{
+  border:"1px solid black",
+  color:"black",
+  height:"30px",
+  transition:"all .1s ease",
+  "&:hover":{
+    background:"black",
+    color:"white",
+    border:"none"
+  }
+}}
+>
+  Checkout  ${totalPrice.toFixed(2)}
+</Button>
+  </Box>
+</Container>
     </div>
   )
 }

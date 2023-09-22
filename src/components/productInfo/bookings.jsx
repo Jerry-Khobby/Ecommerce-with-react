@@ -134,6 +134,7 @@ const clearItem=(item)=>{
 
 <Container sx={{marginTop:18,display:"flex",alignItems:"center",justifyContent:"center"}}>
   {/** I will put my payments methods over here  */}
+  {/** I will come back and implement the paystrip over here  */}
   <Box sx={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:"1rem",width:"250px",height:"180px",borderRadius:"2rem", background:"#d3d3d3",}}
   >
     <Typography>

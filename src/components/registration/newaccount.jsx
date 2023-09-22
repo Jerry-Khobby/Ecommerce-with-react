@@ -61,6 +61,30 @@ const NewAccount = () => {
               <TextField
                 fullWidth
                 variant="outlined"
+                type="name"
+                name="first_name"
+                label="Enter your first name"
+                required
+                value={inputs.name}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                variant="outlined"
+                type="name"
+                name="other_names"
+                label="Enter your other names"
+                required
+                value={inputs.name2}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                variant="outlined"
                 type="password"
                 name="password1"
                 label="Password"

@@ -45,9 +45,21 @@ const Login = () => {
             label="Email Address"
             name="email"
             autoComplete="email"
-            autoFocus
             value={inputValue}
+            autoFocus
             onChange={handleInputChange}
+            style={{ marginBottom: '20px', width: '' }}
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            id="password"
+            label="Enter your password"
+            name="password1"
+            autoComplete="email"
+            autoFocus
+            type='password'
             style={{ marginBottom: '20px', width: '' }}
           />
           <Link to="/signup" style={{textDecoration:'none'}}>

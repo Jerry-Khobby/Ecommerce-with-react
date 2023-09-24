@@ -7,8 +7,12 @@ import { TextField, Button, Container, Typography, Grid } from '@mui/material';
 
 const NewAccount = () => {
   const [inputs, setInputs] = useState({
+    email: '',
+    first_name:'',
+    other_names:'',
     password1: '',
     password2: '',
+
   });
 
   const handleChange = (event) => {
@@ -19,9 +23,32 @@ const NewAccount = () => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit =async (event) => {
     event.preventDefault();
     // const { password1, password2 } = inputs;
+    const { first_name, other_names, email, password1, password2 } = inputs;
+    const requestOptions={
+      method:'POST',
+      Headers:{
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        first_name,
+        other_names,
+        email,
+        password1,
+        password2, 
+      })
+    };
+    console.log('Request:', requestOptions);
+    const response = await fetch('http://localhost:5000/signup', requestOptions);
+    if (response.status === 201) {
+      // The user account was created successfully
+      console.log("User created successfully");
+    } else {
+      // An error occurred while creating the user account
+      console.log("An error occurred while creating the user account");
+    }
   };
 
   const { email } = useEmail();
@@ -37,7 +64,7 @@ const NewAccount = () => {
             safe, we need a strong password
           </Typography>
         </div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} method='POST'>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField

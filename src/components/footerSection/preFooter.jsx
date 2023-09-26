@@ -7,7 +7,7 @@ const PreFooter = () => {
     return ( 
         <div className='footer-heading-container'>
             <div className='footer-text-container'>
-                <h4>Develop by Jeremiah</h4>
+                <h4>Developed by Jeremiah</h4>
             </div>
         </div>
      );

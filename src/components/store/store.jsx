@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import jumialogo from '../../images/Jumia-Logo.png';
+import myjumia from '../../images/myjumia-top-logo.png';
 import { FaSearch } from 'react-icons/fa';
  import {AiOutlineUser,AiOutlineInbox,} from 'react-icons/ai';
 import './storeNavbar.css';
@@ -30,7 +30,7 @@ const Store = () => {
     <div className="store-container">
       <Link to="/">
       <div className="logo-container">
-        <img src={jumialogo} alt="" height={100} width={100} />
+        <img src={myjumia} alt="" height={30} width={50} />
       </div>
       </Link>
       <div className="search-container">

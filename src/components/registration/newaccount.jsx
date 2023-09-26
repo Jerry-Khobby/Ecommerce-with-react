@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import myjumia from '../../images/myjumia-top-logo.png';
 import { Link } from 'react-router-dom';
 import './newaccount.css'; // Note: Ensure that the CSS file name matches your component name
-import { useEmail } from '../../context/email';
 import { TextField, Button, Container, Typography, Grid } from '@mui/material';
+import {useEmail} from '../../context/email';
 
 const NewAccount = () => {
   const [inputs, setInputs] = useState({
     email: '',
-    first_name:'',
-    other_names:'',
+    first_name: '',
+    other_names: '',
     password1: '',
     password2: '',
-
   });
+
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -23,48 +23,45 @@ const NewAccount = () => {
     });
   };
 
-  const handleSubmit =async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // const { password1, password2 } = inputs;
-    const { first_name, other_names, email, password1, password2 } = inputs;
-    const requestOptions={
-      method:'POST',
-      Headers:{
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        first_name,
-        other_names,
-        email,
-        password1,
-        password2, 
-      })
-    };
-    console.log('Request:', requestOptions);
-    const response = await fetch('http://localhost:5000/signup', requestOptions);
-    if (response.status === 201) {
-      // The user account was created successfully
-      console.log("User created successfully");
-    } else {
-      // An error occurred while creating the user account
-      console.log("An error occurred while creating the user account");
+    // Add your form submission logic here
+    try{
+      const response =await fetch('http://localhost:5000/auth/signup',{
+method: 'POST',
+headers: {
+  'Content-Type': 'application/json',
+},
+body: JSON.stringify(inputs),
+      });
+      if(response.ok){
+        console.log('User account created successfully');
+      }else{
+        const data = await response.json();
+      console.error('Error creating user account:', data.error);
+      }
+
+    }catch(error){
+console.log('An error occured:',error);
     }
   };
 
-  const { email } = useEmail();
+
+  const {email}=useEmail();
+
 
   return (
-    <Container component="main" maxWidth="lg" style={{height:'80vh'}}>
+    <Container component="main" maxWidth="lg" style={{ height: '80vh' }}>
       <div className="login_master_container">
         <div className="login_text_container">
           <img src={myjumia} alt="Jumia Logo" height={55} width={55} />
           <Typography variant="h4">Create your account</Typography>
-          <Typography variant="body1" style={{marginBottom:'15px'}}>
+          <Typography variant="body1" style={{ marginBottom: '15px' }}>
             Let's get started by creating your account. To keep your account
             safe, we need a strong password
           </Typography>
         </div>
-        <form onSubmit={handleSubmit} method='POST'>
+        <form onSubmit={handleSubmit} method="POST">
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -72,13 +69,13 @@ const NewAccount = () => {
                 variant="outlined"
                 name="email"
                 label="Email"
+               /*  InputProps={
+                  {
+                    readOnly: true,
+                  }
+                } */
                 value={email}
-                InputProps={{
-                  readOnly: true,
-                }}
-                InputLabelProps={{
-                  shrink: true,
-                }}
+                onChange={handleChange}
               />
               <Link to="/signin" style={{ fontSize: 13, textDecoration: 'none', color: 'orange' }}>
                 Edit
@@ -88,11 +85,10 @@ const NewAccount = () => {
               <TextField
                 fullWidth
                 variant="outlined"
-                type="name"
                 name="first_name"
                 label="Enter your first name"
                 required
-                value={inputs.name}
+                value={inputs.first_name}
                 onChange={handleChange}
               />
             </Grid>
@@ -100,11 +96,10 @@ const NewAccount = () => {
               <TextField
                 fullWidth
                 variant="outlined"
-                type="name"
                 name="other_names"
                 label="Enter your other names"
                 required
-                value={inputs.name2}
+                value={inputs.other_names}
                 onChange={handleChange}
               />
             </Grid>
@@ -134,17 +129,15 @@ const NewAccount = () => {
             </Grid>
           </Grid>
           <div className="continue_button">
-            <Link to="/" style={{textDecoration:'none'}}>
-              <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                fullWidth
-                style={{ cursor: 'pointer',marginTop:'10px' }}
-              >
-                Continue
-              </Button>
-            </Link>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              fullWidth
+              style={{ cursor: 'pointer', marginTop: '10px' }}
+            >
+              Continue
+            </Button>
           </div>
         </form>
       </div>

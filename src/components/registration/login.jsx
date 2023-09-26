@@ -1,30 +1,53 @@
 import React, { useState } from 'react';
 import './Login.css';
 import myjumia from '../../images/myjumia-top-logo.png';
-import { Link } from 'react-router-dom';
 import { useEmail } from '../../context/email';
-import FacebookIcon from '@mui/icons-material/Facebook';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 
 const Login = () => {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState({
+    email:'',
+    password:'',
+  });
   const { setEmail } = useEmail();
 
   const handleInputChange = (e) => {
-    setInputValue(e.target.value);
-    setEmail(e.target.value);
+  const {name, value} = e.target;
+  setInputValue({
+    ...inputValue,
+    [name]: value,
+  })
+    setEmail(inputValue.email);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Your form submission logic goes here
+    try{
+      const response =await fetch("http://localhost:5000/auth/signin",{
+        method: "POST",
+        headers:{
+          'Content-Type': 'application/json',
+
+        },
+        body: JSON.stringify(inputValue),
+      });
+      if(response.ok){
+        console.log('Login successful');
+      }else{
+        const data = await response.json();
+        console.error('There is an error loggin:', data.error);
+      }
+    }catch(error){
+      console.log('An error occured:',error);
+    }
   };
 
   return (
-    <Container component="main" maxWidth="lg" style={{height:'80vh'}}>
+    <Container component="main" maxWidth="lg" style={{ height: '80vh' }}>
       <div className="login_master_container">
         <div className="login_text_container">
           <img src={myjumia} alt="Jumia Logo" height={55} width={55} />
@@ -36,52 +59,41 @@ const Login = () => {
             <span>account.</span>
           </Typography>
         </div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} method='POST'>
           <TextField
             variant="outlined"
             margin="normal"
             fullWidth
-            id="email"
             label="Email Address"
             name="email"
+            required
             autoComplete="email"
-            value={inputValue}
+            value={inputValue.email}
             autoFocus
             onChange={handleInputChange}
-            style={{ marginBottom: '20px', width: '' }}
+            style={{ marginBottom: '20px' }}
           />
           <TextField
             variant="outlined"
             margin="normal"
             fullWidth
-            id="password"
             label="Enter your password"
-            name="password1"
-            autoComplete="email"
             autoFocus
-            type='password'
-            style={{ marginBottom: '20px', width: '' }}
+            required
+            value={inputValue.password}
+            type="password"
+            name='password'
+            onChange={handleInputChange}
+            style={{ marginBottom: '20px' }}
           />
-          <Link to="/signup" style={{textDecoration:'none'}}>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              style={{marginBottom:'50px',width: ''}}
-            >
-              Continue
-            </Button>
-          </Link>
           <Button
+            type="submit"
             fullWidth
             variant="contained"
-            color="secondary"
-            startIcon={<FacebookIcon />}
-            className="facebook-button"
-            style={{marginBottom:'50px'}}
+            color="primary"
+            style={{ marginBottom: '50px' }}
           >
-            Log in with Facebook
+            Continue
           </Button>
         </form>
       </div>

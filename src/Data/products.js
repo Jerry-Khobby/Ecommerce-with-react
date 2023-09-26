@@ -49,7 +49,7 @@ const menClothings=[
     {
       id: 7,
       name: 'Boys Waterproof Sneakers',
-      image: 'https://i.pinimg.com/236x/86/f5/7c/86f57c385ad738d18967438b27801dc1.jpg',
+      image: 'https://m.media-amazon.com/images/I/61-M7Bma7PL._AC_SR540,625__FMwebp_.jpg',
       price: 39.99,
       description:"Browse our children traditional shoes from pram shoes to Mary Jane and lace up shoes. Available in various colours & sizes and as beautiful as practical. Free UK shipping over £150 and US shipping over $300"
     },

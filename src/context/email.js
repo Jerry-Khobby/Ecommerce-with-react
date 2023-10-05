@@ -6,8 +6,15 @@ const EmailContext = createContext();
 export function EmailProvider({ children }) {
   const [email, setEmail] = useState('');
 
+
+  
+  const setEmailValue = (newEmail) => {
+    setEmail(newEmail);
+  };
+
+
   return (
-    <EmailContext.Provider value={{ email, setEmail }}>
+    <EmailContext.Provider value={{ email, setEmail:setEmailValue }}>
       {children}
     </EmailContext.Provider>
   );

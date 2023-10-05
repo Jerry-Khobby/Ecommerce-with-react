@@ -1,11 +1,15 @@
 import React, { useState} from 'react';
 import myjumia from '../../images/myjumia-top-logo.png';
-import { Link } from 'react-router-dom';
 import './newaccount.css'; // Note: Ensure that the CSS file name matches your component name
 import { TextField, Button, Container, Typography, Grid } from '@mui/material';
-import {useEmail} from '../../context/email';
+
+
+
+
+
 
 const NewAccount = () => {
+  /* const {email}=useEmail(); */
   const [inputs, setInputs] = useState({
     email: '',
     first_name: '',
@@ -13,6 +17,8 @@ const NewAccount = () => {
     password1: '',
     password2: '',
   });
+  
+
 
 
   const handleChange = (event) => {
@@ -34,12 +40,14 @@ headers: {
 },
 body: JSON.stringify(inputs),
       });
-      if(response.ok){
+      if(response.status===201){
         console.log('User account created successfully');
+        window.location.href='/';
       }else{
         const data = await response.json();
       console.error('Error creating user account:', data.error);
       }
+
 
     }catch(error){
 console.log('An error occured:',error);
@@ -47,7 +55,6 @@ console.log('An error occured:',error);
   };
 
 
-  const {email}=useEmail();
 
 
   return (
@@ -69,17 +76,15 @@ console.log('An error occured:',error);
                 variant="outlined"
                 name="email"
                 label="Email"
-               /*  InputProps={
+                /* InputProps={
                   {
                     readOnly: true,
                   }
                 } */
-                value={email}
+                 value={inputs.email}
                 onChange={handleChange}
               />
-              <Link to="/signin" style={{ fontSize: 13, textDecoration: 'none', color: 'orange' }}>
-                Edit
-              </Link>
+
             </Grid>
             <Grid item xs={12}>
               <TextField

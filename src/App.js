@@ -18,10 +18,14 @@ import CategoryCartChildrenShoes from './components/productInfo/shoppingcomponen
 import './App.css'
 import { Provider } from 'react-redux';
 import store from '../src/state/store';
+import ResetPassword from './components/registration/resetpassword';
+import OtpInput from './components/registration/OTPInput';
+
 
 
 
 function App() {
+
 
   return (
     <div className='app-container'>
@@ -43,6 +47,8 @@ function App() {
 </Route>
 <Route path="/signin" Component={Login} exact/>
 <Route path='/signup' Component={NewAccount} exact/>
+<Route path='/auth/resetpassword/:email' Component={ResetPassword} exact/>
+<Route path="/auth/resetpassword/otp/:email" Component={OtpInput} exact/>
 </Routes>
 
    </BrowserRouter>

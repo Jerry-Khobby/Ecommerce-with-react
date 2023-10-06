@@ -50,11 +50,12 @@ if(response.status===201){
   },[email]);
 
 
-  const handleSubmit = async (event) => {
+const handleSubmit = async (event) => {
     event.preventDefault();
     setError('');
     // Handle OTP verification logic here
-    const code =otp.join('');
+    const code=otp.join('');
+    
     console.log(code);
     try{
 const response =await fetch(`http://localhost:5000/auth/resetpassword/otp/${email}`,{
@@ -62,7 +63,7 @@ method: 'POST',
 headers:{
   'Content-Type': 'application/json',
 },
-body: JSON.stringify({code}),
+body: JSON.stringify({ code }),
 });
 if(response.status===200){
   console.log('User account created successfully verified with the code ');
@@ -109,8 +110,10 @@ if(response.status===200){
       <Box
         sx={{
           textAlign: 'center',
-          padding: 4,
-          border: '2px solid transparent', // Set border to transparent
+          padding: '4px',
+          border: '2px solid transparent',
+           // Set border to transparent
+           // Add right padding
           borderRadius: '20px',
           boxShadow: '0px 0px 20px 0px rgba(0, 0, 0, 0.2)',
           height: '65vh',

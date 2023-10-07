@@ -2,6 +2,7 @@ import React, { useState} from 'react';
 import myjumia from '../../images/myjumia-top-logo.png';
 import './newaccount.css'; // Note: Ensure that the CSS file name matches your component name
 import { TextField, Button, Container, Typography, Grid } from '@mui/material';
+import Cookies from 'js-cookie';
 
 
 
@@ -41,6 +42,12 @@ headers: {
 body: JSON.stringify(inputs),
       });
       if(response.status===201){
+const data = await response.json();
+    const {token}=data;  
+
+ // Store the token as an HTTP-only cookie with a 7-day expiration
+   Cookies.set('token', token, { expires: 3*24* 60*60, secure: true, sameSite: 'None' });
+
         console.log('User account created successfully');
         window.location.href='/';
       }else{

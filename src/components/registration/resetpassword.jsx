@@ -4,71 +4,59 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 /* import { useNavigate } from 'react-router-dom'; */
-import { useEmail } from '../../context/email';
+import { useParams } from 'react-router-dom';
 
 const ResetPassword = () => {
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+const [inputValue,setInputValue]=useState({
+  newPassword:'',
+  confirmPassword:'',
+})
   const [error, setError] = useState('');
-
+  const {email}=useParams();
 
 
   /// grabing the current the email from the context 
-  const {email}= useEmail();
 
-  const handleNewPasswordChange = (e) => {
-    setNewPassword(e.target.value);
-  };
-
-  const handleConfirmPasswordChange = (e) => {
-    setConfirmPassword(e.target.value);
-  };
+ const handleInputChange=(e)=>{
+  const {name,value}=e.target;
+setInputValue({
+  ...inputValue,
+  [name]:value,
+})
+ }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (newPassword !== confirmPassword) {
-      setError('Passwords do not match.');
-
-      setTimeout(() => {
-        setError('');
-      },4000);
-      return;
-    }
-    //coming to configure that in the frontend of the code 
-    try {
+    e.preventDefault(); 
+  try {
 const response = await fetch(`http://localhost:5000/auth/resetpassword/${email}`,{
-method: 'PUT',
+method: 'POST',
 headers:{
     'content-type':'application/json',
 },
-body: JSON.stringify({newPassword}),
+body: JSON.stringify(inputValue),
 });
-
-  const data = await response.json();
+const data = await response.json();
   console.log("Response data:", data);
-  if (!response.ok) {
-    setError('Password reset failed. Please try again.');
-    setTimeout(() => {
-        setError('');
-      },4000);
-    return;
-  }
-
-if(response.status===200){
-    console.log("Password has been resetted successfully");
-    window.location.href='/signin';
+  if (response.status===200) {
+  console.log("User's password have been updated  successfully");
+  window.location.href='/';
+  }else if(response.status===400){
+console.log("Passwords do not match with password");
+setTimeout(()=>{
+  setError("The password you entered does not match ");
+},4000);
+  }else if(response.status===404){
+console.log("User was not found in the database");
+setTimeout(()=>{
+  setError("Sorry the user account was found in the database go back and create an account");
+},4000);
 }else{
-    setError("Sorry Please try again");
-    setTimeout(() => {
-        setError('');
-      },4000);
+  console.log("Error resettin password of the user,",data.error);
 }
 }catch(e){
 console.log("Error in resetting password",e);
-setError('An error occurred while resetting the password. Please try again later.');
 setTimeout(() => {
-    setError('');
+    setError('An error occurred while resetting the password. Please try again');
   },4000);
     }
   };
@@ -79,7 +67,7 @@ setTimeout(() => {
         <Typography component="h2" variant="h5">
           Reset Password
         </Typography>
-        <form onSubmit={handleSubmit} method='PUT'>
+        <form onSubmit={handleSubmit} method='POST'>
           <TextField
             variant="outlined"
             margin="normal"
@@ -87,9 +75,8 @@ setTimeout(() => {
             label="New Password"
             type="password"
             required
-            value={newPassword}
             name='newPassword'
-            onChange={handleNewPasswordChange}
+            onChange={handleInputChange}
             style={{ marginBottom: '20px' }}
           />
           <TextField
@@ -99,9 +86,8 @@ setTimeout(() => {
             label="Confirm Password"
             type="password"
             required
-            value={confirmPassword}
             name='confirmPassword'
-            onChange={handleConfirmPasswordChange}
+            onChange={handleInputChange}
             style={{ marginBottom: '20px' }}
           />
           {error && (
@@ -114,8 +100,7 @@ setTimeout(() => {
             fullWidth
             variant="contained"
             color="primary"
-            style={{ marginBottom: '20px' }}
-          >
+            style={{ marginBottom: '20px' }}>
             Reset Password
           </Button>
         </form>

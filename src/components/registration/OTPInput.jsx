@@ -8,7 +8,7 @@ const OtpInput = () => {
   const [seconds, setSeconds] = useState(11);
   const [showResendMessage, setShowResendMessage] = useState(false);
   const { email } = useEmail();
-  const [error, setError] = useState('');
+  const [error,setError] = useState('');
 
 
   
